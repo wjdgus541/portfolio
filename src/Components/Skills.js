@@ -15,6 +15,17 @@ const Wrapper = styled.section`
   margin-top: 30px;
 `;
 
+const WrapperPc = styled(Wrapper)`
+  width: 700px;
+  height: 180px;
+  margin-top: 50px;
+`;
+
+const WrapperBigPc = styled(WrapperPc)`
+  width: 910px;
+  height: 200px;
+`;
+
 const SkillBox = styled.div`
   width: 80%;
   padding: 10px;
@@ -48,16 +59,42 @@ const ReactIcon = styled.img`
   }
 `;
 
-export default function Skills() {
+export default function Skills({ device }) {
   return (
-    <Wrapper>
-      <h2>Skills</h2>
-      <SkillBox>
-        <Icon src={HTMLImg} />
-        <Icon src={CSSImg} />
-        <JsIcon src={JSImg} />
-        <ReactIcon src={ReactImg} />
-      </SkillBox>
-    </Wrapper>
+    <>
+      {(device === "mobile" || device === "tablet") && (
+        <Wrapper>
+          <h2>Skills</h2>
+          <SkillBox>
+            <Icon src={HTMLImg} />
+            <Icon src={CSSImg} />
+            <JsIcon src={JSImg} />
+            <ReactIcon src={ReactImg} />
+          </SkillBox>
+        </Wrapper>
+      )}
+      {device === "pc" && (
+        <WrapperPc>
+          <h2>Skills</h2>
+          <SkillBox>
+            <Icon src={HTMLImg} />
+            <Icon src={CSSImg} />
+            <JsIcon src={JSImg} />
+            <ReactIcon src={ReactImg} />
+          </SkillBox>
+        </WrapperPc>
+      )}
+      {device === "bigPc" && (
+        <WrapperBigPc>
+          <h2>Skills</h2>
+          <SkillBox>
+            <Icon src={HTMLImg} />
+            <Icon src={CSSImg} />
+            <JsIcon src={JSImg} />
+            <ReactIcon src={ReactImg} />
+          </SkillBox>
+        </WrapperBigPc>
+      )}
+    </>
   );
 }

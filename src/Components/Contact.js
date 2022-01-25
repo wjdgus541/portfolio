@@ -15,6 +15,16 @@ const Wrapper = styled.div`
   margin-top: 30px;
 `;
 
+const WrapperPc = styled(Wrapper)`
+  width: 700px;
+  height: 260px;
+  margin-top: 50px;
+`;
+
+const WrapperBigPc = styled(WrapperPc)`
+  width: 910px;
+`;
+
 const Title = styled.h2`
   margin: 0;
 `;
@@ -73,7 +83,7 @@ const IconGithub = styled(FaGithubSquare)`
   }
 `;
 
-export default function Contact() {
+export default function Contact({ device }) {
   const copyMail = () => {
     const email = "nnn5425@naver.com";
     try {
@@ -94,34 +104,100 @@ export default function Contact() {
     }
   };
   return (
-    <Wrapper>
-      <Title>Contact</Title>
-      <MailBox>
-        <IconMail onClick={copyMail} />
-        <span>nnn5425@naver.com</span>
-      </MailBox>
-      <LinkWrapper>
-        <LinkBox>
-          <IconsTitle>Notion</IconsTitle>
-          <a
-            href="https://www.notion.so/Pin-s-TIL-5a5a5d8b2a644d92b1d37812026eb21c"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <IconNotion />
-          </a>
-        </LinkBox>
-        <LinkBox>
-          <IconsTitle>GitHub</IconsTitle>
-          <a
-            href="https://github.com/wjdgus541"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <IconGithub />
-          </a>
-        </LinkBox>
-      </LinkWrapper>
-    </Wrapper>
+    <>
+      {(device === "mobile" || device === "tablet") && (
+        <Wrapper>
+          <Title>Contact</Title>
+          <MailBox>
+            <IconMail onClick={copyMail} />
+            <span>nnn5425@naver.com</span>
+          </MailBox>
+          <LinkWrapper>
+            <LinkBox>
+              <IconsTitle>Notion</IconsTitle>
+              <a
+                href="https://www.notion.so/Pin-s-TIL-5a5a5d8b2a644d92b1d37812026eb21c"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconNotion />
+              </a>
+            </LinkBox>
+            <LinkBox>
+              <IconsTitle>GitHub</IconsTitle>
+              <a
+                href="https://github.com/wjdgus541"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconGithub />
+              </a>
+            </LinkBox>
+          </LinkWrapper>
+        </Wrapper>
+      )}
+      {device === "pc" && (
+        <WrapperPc>
+          <Title>Contact</Title>
+          <MailBox>
+            <IconMail onClick={copyMail} />
+            <span>nnn5425@naver.com</span>
+          </MailBox>
+          <LinkWrapper>
+            <LinkBox>
+              <IconsTitle>Notion</IconsTitle>
+              <a
+                href="https://www.notion.so/Pin-s-TIL-5a5a5d8b2a644d92b1d37812026eb21c"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconNotion />
+              </a>
+            </LinkBox>
+            <LinkBox>
+              <IconsTitle>GitHub</IconsTitle>
+              <a
+                href="https://github.com/wjdgus541"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconGithub />
+              </a>
+            </LinkBox>
+          </LinkWrapper>
+        </WrapperPc>
+      )}
+      {device === "bigPc" && (
+        <WrapperBigPc>
+          <Title>Contact</Title>
+          <MailBox>
+            <IconMail onClick={copyMail} />
+            <span>nnn5425@naver.com</span>
+          </MailBox>
+          <LinkWrapper>
+            <LinkBox>
+              <IconsTitle>Notion</IconsTitle>
+              <a
+                href="https://www.notion.so/Pin-s-TIL-5a5a5d8b2a644d92b1d37812026eb21c"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconNotion />
+              </a>
+            </LinkBox>
+            <LinkBox>
+              <IconsTitle>GitHub</IconsTitle>
+              <a
+                href="https://github.com/wjdgus541"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconGithub />
+              </a>
+            </LinkBox>
+          </LinkWrapper>
+        </WrapperBigPc>
+      )}
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useMediaQuery } from "react-responsive";
 import Profile from "./Components/Profile";
 import Skills from "./Components/Skills";
 import Contents from "./Components/Contents";
@@ -41,13 +42,30 @@ function App() {
       point: ["API 사용하기", "LocalStorage 이용하기"],
     },
   ];
+
+  let device = "";
+  const isTablet = useMediaQuery({
+    query: "(min-width:480px) and (max-width:767px)",
+  });
+  const isPc = useMediaQuery({
+    query: "(min-width:768px) and (max-width:1023px)",
+  });
+  const isBigPc = useMediaQuery({
+    query: "(min-width:1024px)",
+  });
+  if (isTablet) device = "tablet";
+  else if (isPc) device = "pc";
+  else if (isBigPc) device = "bigPc";
+  else device = "mobile";
+  console.log(device);
+
   return (
     <Wrapper>
-      <Profile />
-      <Contact />
-      <Skills />
+      <Profile device={device} />
+      <Contact device={device} />
+      <Skills device={device} />
       {contents.map((item) => (
-        <Contents content={item} />
+        <Contents content={item} device={device} />
       ))}
     </Wrapper>
   );

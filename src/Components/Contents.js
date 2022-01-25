@@ -11,8 +11,7 @@ const Wrapper = styled.section`
 const ImgLink = styled.a`
   width: 390px;
   height: 260px;
-  margin-top: 30px;
-  padding: 10px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,13 +30,35 @@ const ImgLink = styled.a`
   }
 `;
 
+const ImgLinkPc = styled(ImgLink)`
+  width: 700px;
+  height: 340px;
+  margin-top: 50px;
+`;
+
+const ImgLinkBigPc = styled(ImgLinkPc)`
+  width: 910px;
+  height: 450px;
+`;
+
 const Img = styled.img`
-  margin-top: 30px;
+  margin-top: 50px;
   width: 390px;
   height: 260px;
   border-radius: 5px;
   z-index: 1;
   position: relative;
+`;
+
+const ImgPc = styled(Img)`
+  width: 700px;
+  height: 340px;
+  margin-top: 50px;
+`;
+
+const ImgBigPc = styled(ImgPc)`
+  width: 910px;
+  height: 450px;
 `;
 
 const Explanation = styled.p`
@@ -49,7 +70,17 @@ const ContentsWrapper = styled.div`
   width: 390px;
   border-radius: 5px;
   padding: 30px 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+`;
+
+const ContentsWrapperPc = styled(ContentsWrapper)`
+  width: 700px;
+`;
+
+const ContentsWrapperBigPc = styled(ContentsWrapper)`
+  width: 910px;
+  height: 330px;
+  padding: 30px 40px;
 `;
 
 const StudyPointList = styled.ul`
@@ -93,29 +124,93 @@ const GithubText = styled.span`
   font-size: 15px;
 `;
 
-export default function Contents({ content }) {
+export default function Contents({ content, device }) {
   const { img, title, explan, githubURL, siteURL, point } = content;
 
   return (
-    <Wrapper>
-      <ImgLink href={siteURL} target="_blank" rel="noopener noreferrer">
-        <p>go to Site</p>
-      </ImgLink>
-      <Img src={require(`../images/${img}.png`)} alt={title} />
-      <ContentsWrapper>
-        <h3>{title}</h3>
-        <Explanation>{explan}</Explanation>
-        <StudyPointList>
-          <span>Study Point</span>
-          {point.map((item) => (
-            <StudyPointItem>- {item}</StudyPointItem>
-          ))}
-        </StudyPointList>
-        <GithubLink href={githubURL} target="_blank" rel="noopener noreferrer">
-          <GithubIcon />
-          <GithubText>Github 바로가기</GithubText>
-        </GithubLink>
-      </ContentsWrapper>
-    </Wrapper>
+    <>
+      {(device === "mobile" || device === "tablet") && (
+        <Wrapper>
+          <ImgLink href={siteURL} target="_blank" rel="noopener noreferrer">
+            <p>go to Site</p>
+          </ImgLink>
+          <Img src={require(`../images/${img}.png`)} alt={title} />
+          <ContentsWrapper>
+            <h3>{title}</h3>
+            <Explanation>{explan}</Explanation>
+            <StudyPointList>
+              <span>Study Point</span>
+              {point.map((item) => (
+                <StudyPointItem>- {item}</StudyPointItem>
+              ))}
+            </StudyPointList>
+            <GithubLink
+              href={githubURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon />
+              <GithubText>Github 바로가기</GithubText>
+            </GithubLink>
+          </ContentsWrapper>
+        </Wrapper>
+      )}
+      {device === "pc" && (
+        <Wrapper>
+          <ImgLinkPc href={siteURL} target="_blank" rel="noopener noreferrer">
+            <p>go to Site</p>
+          </ImgLinkPc>
+          <ImgPc src={require(`../images/${img}.png`)} alt={title} />
+          <ContentsWrapperPc>
+            <h3>{title}</h3>
+            <Explanation>{explan}</Explanation>
+            <StudyPointList>
+              <span>Study Point</span>
+              {point.map((item) => (
+                <StudyPointItem>- {item}</StudyPointItem>
+              ))}
+            </StudyPointList>
+            <GithubLink
+              href={githubURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon />
+              <GithubText>Github 바로가기</GithubText>
+            </GithubLink>
+          </ContentsWrapperPc>
+        </Wrapper>
+      )}
+      {device === "bigPc" && (
+        <Wrapper>
+          <ImgLinkBigPc
+            href={siteURL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p>go to Site</p>
+          </ImgLinkBigPc>
+          <ImgBigPc src={require(`../images/${img}.png`)} alt={title} />
+          <ContentsWrapperBigPc>
+            <h3>{title}</h3>
+            <Explanation>{explan}</Explanation>
+            <StudyPointList>
+              <span>Study Point</span>
+              {point.map((item) => (
+                <StudyPointItem>- {item}</StudyPointItem>
+              ))}
+            </StudyPointList>
+            <GithubLink
+              href={githubURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon />
+              <GithubText>Github 바로가기</GithubText>
+            </GithubLink>
+          </ContentsWrapperBigPc>
+        </Wrapper>
+      )}
+    </>
   );
 }
