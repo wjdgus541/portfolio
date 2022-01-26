@@ -5,7 +5,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body {
-	margin: 40px 0;
+	margin: 40px 0 0 0;
 	width: 100vw;
   display: flex;
   flex-direction: column;

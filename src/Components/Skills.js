@@ -42,6 +42,11 @@ const Icon = styled.img`
   }
 `;
 
+const IconPc = styled(Icon)`
+  width: 65px;
+  height: 60px;
+`;
+
 const JsIcon = styled.img`
   width: 39px;
   height: 50px;
@@ -51,12 +56,21 @@ const JsIcon = styled.img`
   }
 `;
 
+const JsIconPc = styled(JsIcon)`
+  width: 45px;
+  height: 60px;
+`;
+
 const ReactIcon = styled.img`
   width: 40px;
   margin: auto;
   :hover {
     transform: translateY(-4px);
   }
+`;
+
+const ReactIconPc = styled(ReactIcon)`
+  width: 50px;
 `;
 
 export default function Skills({ device }) {
@@ -77,10 +91,10 @@ export default function Skills({ device }) {
         <WrapperPc>
           <h2>Skills</h2>
           <SkillBox>
-            <Icon src={HTMLImg} />
-            <Icon src={CSSImg} />
-            <JsIcon src={JSImg} />
-            <ReactIcon src={ReactImg} />
+            <IconPc src={HTMLImg} />
+            <IconPc src={CSSImg} />
+            <JsIconPc src={JSImg} />
+            <ReactIconPc src={ReactImg} />
           </SkillBox>
         </WrapperPc>
       )}
@@ -88,10 +102,10 @@ export default function Skills({ device }) {
         <WrapperBigPc>
           <h2>Skills</h2>
           <SkillBox>
-            <Icon src={HTMLImg} />
-            <Icon src={CSSImg} />
-            <JsIcon src={JSImg} />
-            <ReactIcon src={ReactImg} />
+            <IconPc src={HTMLImg} />
+            <IconPc src={CSSImg} />
+            <JsIconPc src={JSImg} />
+            <ReactIconPc src={ReactImg} />
           </SkillBox>
         </WrapperBigPc>
       )}

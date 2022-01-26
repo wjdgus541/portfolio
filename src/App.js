@@ -4,6 +4,7 @@ import Profile from "./Components/Profile";
 import Skills from "./Components/Skills";
 import Contents from "./Components/Contents";
 import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,6 +68,7 @@ function App() {
       {contents.map((item) => (
         <Contents content={item} device={device} />
       ))}
+      <Footer />
     </Wrapper>
   );
 }

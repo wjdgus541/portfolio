@@ -32,13 +32,13 @@ const ImgLink = styled.a`
 
 const ImgLinkPc = styled(ImgLink)`
   width: 700px;
-  height: 340px;
+  height: 380px;
   margin-top: 50px;
 `;
 
 const ImgLinkBigPc = styled(ImgLinkPc)`
   width: 910px;
-  height: 450px;
+  height: 480px;
 `;
 
 const Img = styled.img`
@@ -52,13 +52,13 @@ const Img = styled.img`
 
 const ImgPc = styled(Img)`
   width: 700px;
-  height: 340px;
+  height: 380px;
   margin-top: 50px;
 `;
 
 const ImgBigPc = styled(ImgPc)`
   width: 910px;
-  height: 450px;
+  height: 480px;
 `;
 
 const Explanation = styled.p`
@@ -75,16 +75,31 @@ const ContentsWrapper = styled.div`
 
 const ContentsWrapperPc = styled(ContentsWrapper)`
   width: 700px;
+  padding: 30px 30px;
 `;
 
 const ContentsWrapperBigPc = styled(ContentsWrapper)`
   width: 910px;
   height: 330px;
-  padding: 30px 40px;
+  padding: 40px 40px;
+`;
+
+const SiteTitle = styled.p`
+  font-size: 22px;
+  font-weight: 700;
+  margin: 14px 0;
 `;
 
 const StudyPointList = styled.ul`
   list-style: none;
+  margin-top: 30px;
+`;
+
+const ListTitle = styled.span`
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
 `;
 
 const StudyPointItem = styled.li`
@@ -136,10 +151,10 @@ export default function Contents({ content, device }) {
           </ImgLink>
           <Img src={require(`../images/${img}.png`)} alt={title} />
           <ContentsWrapper>
-            <h3>{title}</h3>
+            <SiteTitle>{title}</SiteTitle>
             <Explanation>{explan}</Explanation>
             <StudyPointList>
-              <span>Study Point</span>
+              <ListTitle>Study Point</ListTitle>
               {point.map((item) => (
                 <StudyPointItem>- {item}</StudyPointItem>
               ))}
@@ -162,10 +177,10 @@ export default function Contents({ content, device }) {
           </ImgLinkPc>
           <ImgPc src={require(`../images/${img}.png`)} alt={title} />
           <ContentsWrapperPc>
-            <h3>{title}</h3>
+            <SiteTitle>{title}</SiteTitle>
             <Explanation>{explan}</Explanation>
             <StudyPointList>
-              <span>Study Point</span>
+              <ListTitle>Study Point</ListTitle>
               {point.map((item) => (
                 <StudyPointItem>- {item}</StudyPointItem>
               ))}
@@ -192,10 +207,10 @@ export default function Contents({ content, device }) {
           </ImgLinkBigPc>
           <ImgBigPc src={require(`../images/${img}.png`)} alt={title} />
           <ContentsWrapperBigPc>
-            <h3>{title}</h3>
+            <SiteTitle>{title}</SiteTitle>
             <Explanation>{explan}</Explanation>
             <StudyPointList>
-              <span>Study Point</span>
+              <ListTitle>Study Point</ListTitle>
               {point.map((item) => (
                 <StudyPointItem>- {item}</StudyPointItem>
               ))}
