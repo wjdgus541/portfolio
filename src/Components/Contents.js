@@ -8,6 +8,19 @@ const Wrapper = styled.section`
   width: 100%;
 `;
 
+const WrapperBigPc = styled(Wrapper)`
+  width: 910px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+`;
+
+const ImgWrapper = styled.div`
+  height: 330px;
+  margin-right: 15px;
+`;
+
 const ImgLink = styled.a`
   width: 390px;
   height: 260px;
@@ -23,6 +36,8 @@ const ImgLink = styled.a`
     background-color: rgba(241, 196, 15, 0.5);
     p {
       display: block;
+      font-size: 20px;
+      font-weight: 700;
     }
   }
   p {
@@ -37,8 +52,9 @@ const ImgLinkPc = styled(ImgLink)`
 `;
 
 const ImgLinkBigPc = styled(ImgLinkPc)`
-  width: 910px;
-  height: 480px;
+  width: 450px;
+  height: 330px;
+  margin-top: 0;
 `;
 
 const Img = styled.img`
@@ -53,12 +69,12 @@ const Img = styled.img`
 const ImgPc = styled(Img)`
   width: 700px;
   height: 380px;
-  margin-top: 50px;
 `;
 
 const ImgBigPc = styled(ImgPc)`
-  width: 910px;
-  height: 480px;
+  width: 450px;
+  height: 330px;
+  margin-top: 0px;
 `;
 
 const Explanation = styled.p`
@@ -79,9 +95,10 @@ const ContentsWrapperPc = styled(ContentsWrapper)`
 `;
 
 const ContentsWrapperBigPc = styled(ContentsWrapper)`
-  width: 910px;
+  width: 450px;
   height: 330px;
   padding: 40px 40px;
+  margin-top: 0px;
 `;
 
 const SiteTitle = styled.p`
@@ -147,7 +164,7 @@ export default function Contents({ content, device }) {
       {(device === "mobile" || device === "tablet") && (
         <Wrapper>
           <ImgLink href={siteURL} target="_blank" rel="noopener noreferrer">
-            <p>go to Site</p>
+            <p>Go to Site</p>
           </ImgLink>
           <Img src={require(`../images/${img}.png`)} alt={title} />
           <ContentsWrapper>
@@ -173,7 +190,7 @@ export default function Contents({ content, device }) {
       {device === "pc" && (
         <Wrapper>
           <ImgLinkPc href={siteURL} target="_blank" rel="noopener noreferrer">
-            <p>go to Site</p>
+            <p>Go to Site</p>
           </ImgLinkPc>
           <ImgPc src={require(`../images/${img}.png`)} alt={title} />
           <ContentsWrapperPc>
@@ -197,15 +214,18 @@ export default function Contents({ content, device }) {
         </Wrapper>
       )}
       {device === "bigPc" && (
-        <Wrapper>
-          <ImgLinkBigPc
-            href={siteURL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <p>go to Site</p>
-          </ImgLinkBigPc>
-          <ImgBigPc src={require(`../images/${img}.png`)} alt={title} />
+        <WrapperBigPc>
+          <ImgWrapper>
+            <ImgLinkBigPc
+              href={siteURL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p>Go to Site</p>
+            </ImgLinkBigPc>
+            <ImgBigPc src={require(`../images/${img}.png`)} alt={title} />
+          </ImgWrapper>
+
           <ContentsWrapperBigPc>
             <SiteTitle>{title}</SiteTitle>
             <Explanation>{explan}</Explanation>
@@ -224,7 +244,7 @@ export default function Contents({ content, device }) {
               <GithubText>Github 바로가기</GithubText>
             </GithubLink>
           </ContentsWrapperBigPc>
-        </Wrapper>
+        </WrapperBigPc>
       )}
     </>
   );

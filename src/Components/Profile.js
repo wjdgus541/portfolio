@@ -30,22 +30,17 @@ const ImgBorder = styled.div`
   justify-content: center;
   align-items: center;
   border: 2px solid white;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-`;
-
-const ImgBorderBigPc = styled(ImgBorder)`
-  width: 180px;
-  height: 180px;
-  border-radius: 5px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: ${(props) => props.radius};
 `;
 
 const Intro = styled.div`
   background-color: rgba(189, 195, 199, 0.6);
-  width: 390px;
-  height: 200px;
-  margin-top: 30px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin-top: ${(props) => props.margin_top};
+  margin-left: ${(props) => props.margin_left};
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -53,26 +48,11 @@ const Intro = styled.div`
   flex-direction: column;
 `;
 
-const IntroPc = styled(Intro)`
-  width: 700px;
-  height: 230px;
-  margin-top: 50px;
-`;
-
-const IntroBigPc = styled(Intro)`
-  width: 700px;
-  height: 180px;
-  margin-top: 0px;
-  margin-left: 30px;
-`;
-
-const IntroText = styled.p`
-  font-size: 13px;
+const IntroText = styled.span`
+  font-size: ${(props) => props.size};
   word-break: keep-all;
-`;
-
-const IntroTextPc = styled(IntroText)`
-  font-size: 16px;
+  margin-bottom: ${(props) => props.margin};
+  display: inline-block;
 `;
 
 export default function Profile({ device }) {
@@ -81,13 +61,19 @@ export default function Profile({ device }) {
       <Wrapper>
         {(device === "mobile" || device === "tablet") && (
           <>
-            <ImgBorder>
+            <ImgBorder width={"150px"} height={"150px"} radius={"50%"}>
               <Img />
             </ImgBorder>
-            <Intro>
-              <IntroText>
+            <Intro
+              width={"390px"}
+              height={"200px"}
+              margin_top={"30px"}
+              margin_left={"0px"}
+            >
+              <IntroText size={"14px"} margin={"10px"}>
                 신입 프론트엔드 개발자 김정현입니다.
-                <br />
+              </IntroText>
+              <IntroText size={"14px"} margin={"0px"}>
                 만들기를 좋아한다는 이유로 개발을 시작해서 만들고자 의도한
                 기능이 제대로 동작하는것에 재미를 느껴 지금까지 공부하고
                 있습니다.
@@ -100,41 +86,53 @@ export default function Profile({ device }) {
         )}
         {device === "pc" && (
           <>
-            <ImgBorder>
+            <ImgBorder width={"150px"} height={"150px"} radius={"50%"}>
               <Img />
             </ImgBorder>
-            <IntroPc>
-              <IntroTextPc>
+            <Intro
+              width={"700px"}
+              height={"230px"}
+              margin_top={"50px"}
+              margin_left={"0px"}
+            >
+              <IntroText size={"16px"} margin={"10px"}>
                 신입 프론트엔드 개발자 김정현입니다.
-                <br />
+              </IntroText>
+              <IntroText size={"16px"} margin={"0px"}>
                 만들기를 좋아한다는 이유로 개발을 시작해서 만들고자 의도한
                 기능이 제대로 동작하는것에 재미를 느껴 지금까지 공부하고
                 있습니다.
                 <br />
                 코드를 어떻게 써야 읽기 쉽고 가벼운 웹페이지를 만들 수 있을지
                 고민합니다.
-              </IntroTextPc>
-            </IntroPc>
+              </IntroText>
+            </Intro>
           </>
         )}
       </Wrapper>
 
       {device === "bigPc" && (
         <WrapperBigPc>
-          <ImgBorderBigPc>
+          <ImgBorder width={"180px"} height={"180px"} radius={"5px"}>
             <ImgBigPc />
-          </ImgBorderBigPc>
-          <IntroBigPc>
-            <IntroTextPc>
+          </ImgBorder>
+          <Intro
+            width={"700px"}
+            height={"180px"}
+            margin_top={"0px"}
+            margin_left={"30px"}
+          >
+            <IntroText size={"17px"} margin={"15px"}>
               신입 프론트엔드 개발자 김정현입니다.
-              <br />
+            </IntroText>
+            <IntroText size={"17px"} margin={"0px"}>
               만들기를 좋아한다는 이유로 개발을 시작해서 만들고자 의도한 기능이
               제대로 동작하는것에 재미를 느껴 지금까지 공부하고 있습니다.
               <br />
               코드를 어떻게 써야 읽기 쉽고 가벼운 웹페이지를 만들 수 있을지
               고민합니다.
-            </IntroTextPc>
-          </IntroBigPc>
+            </IntroText>
+          </Intro>
         </WrapperBigPc>
       )}
     </>
