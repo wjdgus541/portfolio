@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
+import Header from "./Components/Header";
 import Profile from "./Components/Profile";
 import Skills from "./Components/Skills";
 import Contents from "./Components/Contents";
@@ -11,6 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 80px;
 `;
 
 function App() {
@@ -62,6 +64,7 @@ function App() {
 
   return (
     <Wrapper>
+      <Header device={device} />
       <Profile device={device} />
       <Contact device={device} />
       <Skills device={device} />
